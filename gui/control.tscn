@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://bth8bepw0y3wj"]
+
+[ext_resource type="Script" uid="uid://c0o74xo5pn0c3" path="res://addons/csv-editor/gui/control.gd" id="1_isql2"]
+[ext_resource type="Script" uid="uid://cra8yhwqgndoi" path="res://addons/csv-editor/classes/Spreadsheet.gd" id="2_hhoxb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 864.0
+offset_bottom = 488.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_isql2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="File" type="MenuButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "File"
+switch_on_hover = true
+item_count = 6
+popup/item_0/text = "Open File"
+popup/item_0/id = 0
+popup/item_1/text = "Open Folder"
+popup/item_1/id = 1
+popup/item_2/id = 2
+popup/item_2/separator = true
+popup/item_3/text = "Save"
+popup/item_3/id = 3
+popup/item_4/text = "Save as..."
+popup/item_4/id = 4
+popup/item_5/text = "Save all"
+popup/item_5/id = 5
+
+[node name="Edit" type="MenuButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Edit"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Cut cell(s)"
+popup/item_0/id = 0
+popup/item_1/text = "Copy cell(s)"
+popup/item_1/id = 1
+popup/item_2/text = "Paste cell(s)"
+popup/item_2/id = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "Open Files:"
+
+[node name="FileList" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HSplitContainer/VBoxContainer/FileList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+item_count = 1
+item_0/text = "Nothing!"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="Spreadsheet" type="Control" parent="VBoxContainer/HSplitContainer/ScrollContainer"]
+custom_minimum_size = Vector2(4032, 1232)
+layout_mode = 2
+focus_mode = 2
+script = ExtResource("2_hhoxb")
+metadata/_custom_type_script = "uid://cra8yhwqgndoi"
